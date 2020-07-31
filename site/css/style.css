@@ -1,38 +1,129 @@
 body{
 	font-size:17px;
-	background-color: #789c93;
 }
-#header-nav{
-	border-radius: 0;
-	border:0;
-	height: 150px;
-	background-color: #eaf2d0;
+
+/*header*/
+
+.navbar{
+	background-color: #cfcf46;
 }
-.navbar-brand{
-	padding-top: 30px;
+.shadow{
+	box-shadow: 5px 5px 10px #bfbdbb;
 }
-.navbar-brand h1{
-	font-family: 'Metal Mania', 'Odibee Sans' , cursive;
-	color: #f562a6;
-	font-size: 3em;
-	text-transform: uppercase;
-	font-weight: bold;
-	text-shadow: 2px 2px 2px grey;
-	margin-bottom: 0;
-	margin-top: 0;
-	line-height: 0.75;
+#navbarToggle{
+	border : 2px solid #fce6cf;
+	color:transparent;
 }
-.navbar-brand a:hover, .navbar-brand a:focus{
-	text-decoration: none;
+nav div div ul li {
+	width: 100%;
+	text-align: center;
+	padding:3px;
 }
-.navbar-brand p{
-	color:red;
-	text-transform: uppercase;
-	font-size: 0.8em;
-	margin-top: 15px;
+.navbar-toggler:focus, .navbar-toggler:hover {
+    background-color: #E7E7E7;
 }
-#logo-img{
-	 background: solid black;
-	width: 150px;
-	height: 150px;
+/*.collapse .navbar-nav{
+	flex-direction:row;
+}*/
+.navbar-nav .active{
+	background-color:  #e6e1e1;
+	border-radius: 10px;
+}
+#nav-list {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+#nav-list a {
+  color: #951C49;
+  text-align: center;
+}
+#nav-list a:hover , #nav-list a:focus{
+  background: #E7E7E7;
+  border-radius: 6px;			
+}
+
+/*end of header*/
+
+/*main*/
+
+aside{
+	float: left;
+	width: 25%;
+	background-color: #c4d692;
+	height: 100vh;
+	padding: 2%;
+}
+#main-content {
+	float: left;
+	height: 100vh;
+	width: 75%;
+	background-color: #fce6cf;
+}
+.bd-links{
+	font-weight:600;
+}
+@media (min-width: 768px){
+	.bd-links {
+    	top: 5rem;
+    	display: block !important;
+    	height: calc(100vh - 7rem);
+    	padding-left: .25rem;
+   		margin-left: -.25rem;
+    	overflow-y: auto;
 	}
+}
+.bd-links .active {
+    font-weight: 600;
+    color: rgba(0,0,0,0.85);
+}
+.bd-links a+ul {
+    font-size: .875rem;
+}
+.bd-links a{
+    padding: .1875rem .5rem;
+    margin-top: .125rem;
+    color: rgba(0,0,0,0.65);
+    text-decoration: none;
+}
+.bd-links a:hover, .bd-links a:focus {
+    color: rgba(0,0,0,0.85);
+    background-color: rgba(121,82,179,0.1);
+}
+.bd-links a:not(:only-child):not(.collapsed) {
+    color: rgba(0,0,0,0.85);
+}
+.bd-links a:not(:only-child)::before{
+	width: 1.25em;
+	line-height: 0;
+	content: url("data:image/svg+xml,<svg viewBox='0 0 16 16' class='bi bi-caret-right-fill' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z' clip-rule='evenodd'/></svg>");
+  	transition: transform 0.45s ease;
+    transform-origin: .5em 50%;
+}
+.bd-links a:not(:only-child):not(.collapsed)::before {
+    transform: rotate(90deg);
+}
+.bd-links a:only-child{
+    margin-left: 1.25rem;
+}
+/*end of main*/
+/*home-snippet*/
+.pop{
+	background-color: #7fb588;
+	padding:20px;
+	box-shadow: 10px 10px 10px #a2a8a3;
+	border-radius: 30px;
+	transition: width 2s;
+}
+.pop:hover{
+	background-color: #4a9156;
+}
+.animate__animated.animate__slideInDown{
+	--animate-delay:3s ;
+}
+/*footer*/
+
+footer{
+	clear: both;
+	background-color:#21211f;
+}
