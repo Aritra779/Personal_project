@@ -1,5 +1,6 @@
 body{
 	font-size:17px;
+	
 }
 
 /*header*/
@@ -69,34 +70,47 @@ aside{
 	padding: 2%;
 }
 #main-content {
-	float: left;
+	/*float: left;*/
 	height: 100vh;
-	width: 75%;
+	/*width: 75%;*/
+	transition: margin-left .5s;
 	background-color: #fce6cf;
 }
 .bd-links{
+	clear: both;
 	font-weight:600;
 }
-@media (min-width: 768px){
-	.bd-links {
-    	top: 5rem;
-    	display: block !important;
-    	height: calc(100vh - 7rem);
-    	padding-left: .25rem;
-   		margin-left: -.25rem;
-    	overflow-y: auto;
+@media (min-width: 576px){
+	.container{
+		max-width: 100%;
 	}
 }
-@media (max-width: 420px){
-	.bd-links{
-		top: 5rem;
-    	display: block !important;
-    	height: calc(100vh - 7rem);
-    	padding-left: 0;
-   		margin-left: 0;
-    	overflow-y: auto;
-    	overflow-x: auto;
+@media (max-width: 768px){
+	aside{
+		z-index: 1;
+		transition: 0.5s;
+		padding: 0;
 	}
+	.sidenav {
+  		height: 100vh;
+  		width: 0;
+  		z-index: 1;
+  		overflow-x: hidden;
+  		transition: 0.5s;
+	}
+	.sidenav a{
+		color: #818181;
+		display: block;
+		text-decoration: none;
+		transition: 0.3s;
+	}
+	.sidenav .closebtn {
+  		position: relative;
+  		top: 0;
+  		right: 15px;
+  		font-size: 36px;
+  		float: right;
+}
 }
 .bd-links .active {
     font-weight: 600;
@@ -131,6 +145,7 @@ aside{
 .bd-links a:only-child{
     margin-left: 1.25rem;
 }
+
 /*end of main*/
 /*home-snippet*/
 .pop{

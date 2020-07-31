@@ -45,8 +45,10 @@
 </nav>
 	</header>
   <main>
-    <aside>
-      <nav class="bd-links collapse show" aria-label="Docs navigation">
+    <aside id="mySidenav" class="sidenav ">
+      <a href="javascript:void(0)" class="closebtn d-md-none" onclick="closeNav()">&times;</a>
+      <nav class="bd-links" aria-label="Docs navigation">
+        
          <ul class="list-unstyled mb-0">
            <li class="my-1 active">
              <a class="d-inline-flex align-items-center rounded" data-toggle="collapse" href="#writing" role="button" aria-expanded="false" aria-current="true">Writing</a>
@@ -87,7 +89,7 @@
          </ul>
       </nav>
     </aside>
-    <div id="main-content" class="container"></div>
+    <div id="main-content" class="container"><span class="d-md-none" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span></div>
   </main>
   <footer>  
     FOOTER

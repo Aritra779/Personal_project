@@ -43,3 +43,16 @@ $ajaxUtils.sendGetRequest(
 })
 global.$dc = dc;
 })(window);
+
+
+function openNav() {
+  document.getElementById("mySidenav").style.width = "30%";
+  document.getElementById("mySidenav").style.paddingLeft="2%";
+  //document.getElementById("main-content").style.marginLeft = "30%";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("mySidenav").style.padding="0";
+  //document.getElementById("main-content").style.marginLeft= "0";
+}
