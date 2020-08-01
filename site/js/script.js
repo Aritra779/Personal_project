@@ -58,3 +58,19 @@ function closeNav() {
   document.getElementById("main-content").style.marginLeft= "0";
   document.getElementById("main-content").style.maxWidth= "100%";
 }
+
+
+window.addEventListener('load',function(){
+gsap.registerPlugin(TextPlugin);
+
+if (document.querySelector(".ani")) {
+gsap.to(".ani",{
+  duration:10,
+  text:"ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+  ease:"none"
+});
+}
+else{
+  console.log(" Ani Not Found");
+}
+});

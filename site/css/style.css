@@ -80,12 +80,19 @@ aside{
 	clear: both;
 	font-weight:600;
 }
+@media (min-width: 768px){
+	#main-content{
+		float: left;
+		height: 100vh;
+		width: 75%;
+	}
+}
 @media (min-width: 576px){
 	.container{
 		max-width: 100%;
 	}
 }
-@media (max-width: 768px){
+@media (max-width: 767px){
 	aside{
 		z-index: 1;
 		transition: 0.5s;
@@ -159,6 +166,12 @@ aside{
 }
 .animate__animated.animate__slideInDown{
 	--animate-delay:3s ;
+}
+.ani{
+	padding: 5%;
+	margin: 5%;
+	background-color: white;
+
 }
 /*footer*/
 
