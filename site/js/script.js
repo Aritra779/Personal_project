@@ -59,14 +59,15 @@ function closeNav() {
   document.getElementById("main-content").style.maxWidth= "100%";
 }
 
-gsap.registerPlugin(TextPlugin);
+
 window.addEventListener('load',function(){
+  gsap.registerPlugin(TextPlugin);
   var t1=gsap.timeline();
   t1.to("pop",{duration: 1});
   t1.to(".ani",{
   duration:15,
   text:{
-    value: "ABCD EFGH IJKL MNO PQR STUV WXYZ",
+    value: "চলো পড়তে বসি !!",
     padSpace:true,
   },
   ease:"none"
