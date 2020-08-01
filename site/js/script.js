@@ -68,7 +68,7 @@ window.addEventListener('load',function(){
   duration:15,
   text:{
     value: "চলো পড়তে বসি !!",
-    padSpace:true,
+    padSpace:true
   },
   ease:"none"
   });
