@@ -157,7 +157,7 @@ aside{
 /*home-snippet*/
 .pop{
 	background-color: #7fb588;
-	padding:20px;
+	padding:5%;
 	box-shadow: 10px 10px 10px #a2a8a3;
 	border-radius: 30px;
 }
@@ -168,10 +168,11 @@ aside{
 	--animate-delay:3s ;
 }
 .ani{
+	text-align: center;
 	padding: 5%;
 	margin: 5%;
-	background-color: white;
-
+	background-color: #777a80;
+	border-radius: 10px;
 }
 /*footer*/
 

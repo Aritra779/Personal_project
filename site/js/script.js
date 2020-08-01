@@ -59,18 +59,16 @@ function closeNav() {
   document.getElementById("main-content").style.maxWidth= "100%";
 }
 
-
-window.addEventListener('load',function(){
 gsap.registerPlugin(TextPlugin);
-
-if (document.querySelector(".ani")) {
-gsap.to(".ani",{
-  duration:10,
-  text:"ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+window.addEventListener('load',function(){
+  var t1=gsap.timeline();
+  t1.to("pop",{duration: 1});
+  t1.to(".ani",{
+  duration:15,
+  text:{
+    value: "ABCD EFGH IJKL MNO PQR STUV WXYZ",
+    padSpace:true,
+  },
   ease:"none"
-});
-}
-else{
-  console.log(" Ani Not Found");
-}
+  });
 });
