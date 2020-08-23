@@ -24,15 +24,28 @@ $(function () { // Same as document.addEventListener("DOMContentLoaded"...
 
 var dc = {};
 var homeHtml = "snippets/home-snippet.html";
+var mag_1 = "snippets/magazine_2020_p1.html"
 var insertHtml = function (selector, html) {
   var targetElem = document.querySelector(selector);
   targetElem.innerHTML = html;
 };
-  
+var showLoading = function (selector) {
+  var html = "<div class='text-center'>";
+  html += "<img src='images/ajax-loader.gif'></div>";
+  insertHtml(selector, html);
+};
+ 
+var insertProperty = function (string, propName, propValue) {
+  var propToReplace = "{{" + propName + "}}";
+  string = string
+    .replace(new RegExp(propToReplace, "g"), propValue);
+  return string;
+}
+
 document.addEventListener("DOMContentLoaded", function (event) {
 
 // On first load, show home view
-//showLoading("#main-content");
+showLoading("#main-content");
 $ajaxUtils.sendGetRequest(
   homeHtml,
   function (responseText) {
@@ -40,36 +53,30 @@ $ajaxUtils.sendGetRequest(
       .innerHTML = responseText;
   },
   false);
-})
+});
+
+dc.loadMag = function () {
+  showLoading("#main-content");
+  $ajaxUtils.sendGetRequest(
+    mag_1,
+    function (responseText) {
+    document.querySelector("#main-content")
+      .innerHTML = responseText;
+  },
+  false);
+};
+
 global.$dc = dc;
 })(window);
 
-
 function openNav() {
-  document.getElementById("mySidenav").style.width = "35%";
-  document.getElementById("mySidenav").style.paddingLeft="2%";
-  document.getElementById("main-content").style.marginLeft= "35%";
-  document.getElementById("main-content").style.maxWidth= "65%";
+  document.getElementById("mySidenav").style.width = "70%";
+  document.getElementById("mySidenav").style.padding = "3%";
+  document.getElementById("mySidenav").style.paddingTop = "10%";
 }
 
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
-  document.getElementById("mySidenav").style.padding="0";
-  document.getElementById("main-content").style.marginLeft= "0";
-  document.getElementById("main-content").style.maxWidth= "100%";
+  document.getElementById("mySidenav").style.padding = "0";
+  document.getElementById("mySidenav").style.paddingTop = "10%";
 }
-
-
-window.addEventListener('load',function(){
-  gsap.registerPlugin(TextPlugin);
-  var t1=gsap.timeline();
-  t1.to("pop",{duration: 1});
-  t1.to(".ani",{
-  duration:15,
-  text:{
-    value: "চলো পড়তে বসি !!",
-    padSpace:true
-  },
-  ease:"none"
-  });
-});
