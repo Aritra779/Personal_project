@@ -75,7 +75,7 @@ nav div div ul li {
     pointer-events: none;
     cursor: progress;
 }
-#main-content {
+.content {
 	min-height: 100vh;
 	background-color: #fce6cf;
 }
@@ -140,9 +140,6 @@ aside{
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
-#content{
-	overflow-x: auto;
-}
 /*end of mag*/
 /*footer*/
 
@@ -155,4 +152,31 @@ aside{
 }
 
 
+
+/*for page transition*/
+
+.is-transitioning {
+    pointer-events: none;
+    cursor: progress;
+}
+#intro {
+    font-size: 14px;
+    line-height: 1.4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position:relative;
+    overflow-x: auto;
+}
+
+.loader {
+    position: fixed;
+    width: 100vw;
+    height: 200vh;
+    pointer-events: none;
+    background-color: #FFF6ED;
+    z-index: 1;
+    visibility: hidden;
+    opacity: 0;
+}
 

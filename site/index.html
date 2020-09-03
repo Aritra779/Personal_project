@@ -6,8 +6,10 @@
     <title>Your Thoughts</title>
     <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/magazine.css">
   </head>
-<body>
+<body data-barba="wrapper">
+  <div class="loader"></div>
 	<header>
     <nav class="navbar navbar-expand-lg navbar-light shadow">
   <div class="container-fluid">
@@ -34,8 +36,7 @@
   </div>
 </nav>
 	</header>
-  <main>
-    <div id="main-content"></div>
+  <main id="intro" data-barba="container" class="content">
   </main>
   <footer class="panel-footer">  
     <div class="text-center">&copy</div>
@@ -44,9 +45,14 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 
   <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="turnjs4/extras/modernizr.2.5.3.min.js"></script>
+  <script type="text/javascript" src="turnjs4/lib/turn.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/ajax-utils.js"></script>
   <script type="text/javascript" src="js/script.js"></script>
+<!--script type="text/javascript" src="/turnjs4/extras/jquery-ui-1.8.20.custom.min.js"></script>
+
+<script type="text/javascript" src="/turnjs4/lib/hash.js"></script-->
 
 </body>
 </html>

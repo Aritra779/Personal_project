@@ -1,3 +1,48 @@
+ var ajaxOptions = {
+  url: "snippets/magazine_2020_p1.html",
+  dataType: 'html'
+};
+
+ $.when($.ajax(ajaxOptions)).done(function(){
+  console.log("ABCD");
+  function loadApp() {
+
+  // Create the flipbook
+
+  $('.flipbook').turn({
+      // Width
+
+      width:922,
+      
+      // Height
+
+      height:600,
+
+      // Elevation
+
+      elevation: 50,
+      
+      // Enable gradients
+
+      gradients: true,
+      
+      // Auto center this flipbook
+
+      autoCenter: true
+
+  });
+}
+
+// Load the HTML4 version if there's not CSS transform
+
+yepnope({
+  test : Modernizr.csstransforms,
+  yep: ['../../lib/turn.js'],
+  nope: ['../../lib/turn.html4.min.js'],
+  both: ['css/basic.css'],
+  complete: loadApp
+});
+});
 
 $(function () { // Same as document.addEventListener("DOMContentLoaded"...
 
@@ -18,6 +63,7 @@ $(function () { // Same as document.addEventListener("DOMContentLoaded"...
     $(event.target).focus();
   });
 });
+
 
 // On page load (before images or CSS)
 (function (global){
@@ -45,22 +91,22 @@ var insertProperty = function (string, propName, propValue) {
 document.addEventListener("DOMContentLoaded", function (event) {
 
 // On first load, show home view
-showLoading("#main-content");
+//showLoading("#intro");
 $ajaxUtils.sendGetRequest(
   homeHtml,
   function (responseText) {
-    document.querySelector("#main-content")
+    document.querySelector("#intro")
       .innerHTML = responseText;
   },
   false);
 });
 
 dc.loadMag = function () {
-  showLoading("#main-content");
+  //showLoading("#intro");
   $ajaxUtils.sendGetRequest(
     mag_1,
     function (responseText) {
-    document.querySelector("#main-content")
+    document.querySelector("#intro")
       .innerHTML = responseText;
   },
   false);

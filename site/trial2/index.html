@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" div="width=device-width, initial-scale=1">
+  
+  <title>Trial</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <!--link href="booklet/src/jquery.booklet.latest.css" type="text/css" rel="stylesheet" media="screen, projection, tv" /-->
+   <link rel="stylesheet" type="text/css" href="css/magazine.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+ 
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/hash.js"/>
+</head>
+<body>
+  <main>
+  <div class="triangle left"><h1>This is a title</h1></div>
+  <div class="triangle right"><h1>This is a title</h1></div>
+  <button></button>
+</main>
+<nav>
+  <ul>
+    <li id="custom-goto">Page 1</li>
+    <li id="custom-goto">Page 2</li>
+    <li id="custom-goto">Page 3</li>
+    <li id="custom-goto">Page 4</li>
+    <li id="custom-goto">Page 5</li>
+    <li id="custom-goto">Page 6</li>
+    <li id="custom-goto">Page 7</li>
+  </ul>
+  <div id="nav-close"><i class="fas fa-times"></i></div>
+</nav>
+<div class="container-fluid justify-content-center align-items-center">
+  <div class="pop">
+    <div id="pop-close">
+      <i class="fas fa-times"></i>
+    </div>
+    <div class="content"></div>
+  </div>
+</div>
+<div id="canvas" class="hidden">
+  <div class="magazine-viewport">
+    <div class="container">
+      <div class="magazine">
+      <!-- Next button -->
+        <div ignore="1" class="next-button"></div>
+      <!-- Previous button -->
+        <div ignore="1" class="previous-button"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="js/turn.js"></script>
+<script type="text/javascript" src="js/zoom.js"></script>
+<script type="text/javascript" src="js/magazine.js"></script>
+<script type="text/javascript">
+
+  function loadApp() {
+
+  var flipbook = $('.magazine');
+
+  // Check if the CSS was already loaded
+  
+  if (flipbook.width()==0 || flipbook.height()==0) {
+    setTimeout(loadApp, 10);
+    return;
+  }
+  
+  // Create the flipbook
+
+  flipbook.turn({
+      
+      // Magazine width
+
+      width: 900,
+
+      // Magazine height
+
+      height: 600,
+
+      // Duration in millisecond
+
+      duration: 1000,
+
+      // Enables gradients
+
+      gradients: true,
+      
+      // Auto center this flipbook
+
+      autoCenter: true,
+
+      // Elevation from the edge of the flipbook when turning a page
+
+      elevation: 50,
+
+      // The number of pages
+
+      pages: 12,
+
+      // Events
+
+      when: {
+        turning: function(event, page, view) {
+          
+          var book = $(this),
+          currentPage = book.turn('page'),
+          pages = book.turn('pages');
+      
+          // Update the current URI
+
+          Hash.go('page/' + page).update();
+
+          // Show and hide navigation buttons
+
+          disableControls(page);
+
+        },
+
+        turned: function(event, page, view) {
+
+          disableControls(page);
+
+          $(this).turn('center');
+
+          if (page==1) { 
+            $(this).turn('peel', 'br');
+          }
+
+        },
+
+        missing: function (event, pages) {
+
+          // Add pages that aren't in the magazine
+
+          for (var i = 0; i < pages.length; i++)
+            addPage(pages[i], $(this));
+
+        }
+      }
+
+  });
+
+  // Zoom.js
+
+  $('.magazine-viewport').zoom({
+    flipbook: $('.magazine'),
+
+    max: function() { 
+      
+      return largeMagazineWidth()/$('.magazine').width();
+
+    }, 
+
+    when: {
+
+      swipeLeft: function() {
+
+        $(this).zoom('flipbook').turn('next');
+
+      },
+
+      swipeRight: function() {
+        
+        $(this).zoom('flipbook').turn('previous');
+
+      },
+
+      resize: function(event, scale, page, pageElement) {
+
+        if (scale==1)
+          loadSmallPage(page, pageElement);
+        else
+          loadLargePage(page, pageElement);
+
+      },
+      zoomIn: function () {
+        $('.magazine').removeClass('animated').addClass('zoom-in');
+      },
+
+      zoomOut: function () {
+        setTimeout(function(){
+          $('.magazine').addClass('animated').removeClass('zoom-in');
+          resizeViewport();
+        }, 0);
+
+      }
+    }
+  });
+
+  // Zoom event
+
+  if ($.isTouch)
+    $('.magazine-viewport').on('zoom.doubleTap', zoomTo);
+  else
+    $('.magazine-viewport').on('dblclick', zoomTo);
+
+  $(window).on("resize",function() {
+    resizeViewport();
+  }).on('orientationchange', function() {
+    resizeViewport();
+  });
+
+  // Regions
+
+  if ($.isTouch) {
+    $('.magazine').on('touchstart', regionClick);
+  } else {
+    $('.magazine').on("click",regionClick);
+  }
+
+  // Events for the next button
+
+  $('.next-button').on($.mouseEvents.over, function() {
+    
+    $(this).addClass('next-button-hover');
+
+  }).on($.mouseEvents.out, function() {
+    
+    $(this).removeClass('next-button-hover');
+
+  }).on($.mouseEvents.down, function() {
+    
+    $(this).addClass('next-button-down');
+
+  }).on($.mouseEvents.up, function() {
+    
+    $(this).removeClass('next-button-down');
+
+  }).on("click",function() {
+    
+    $('.magazine').turn('next');
+
+  });
+
+  // Events for the prev button
+  
+  $('.previous-button').on($.mouseEvents.over, function() {
+    
+    $(this).addClass('previous-button-hover');
+
+  }).on($.mouseEvents.out, function() {
+    
+    $(this).removeClass('previous-button-hover');
+
+  }).on($.mouseEvents.down, function() {
+    
+    $(this).addClass('previous-button-down');
+
+  }).on($.mouseEvents.up, function() {
+    
+    $(this).removeClass('previous-button-down');
+
+  }).on("click",function() {
+    
+    $('.magazine').turn('previous');
+
+  });
+
+
+  resizeViewport();
+
+  $('.magazine').addClass('animated');
+
+}
+
+
+//loadApp();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+
+
+
+<!--script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js" integrity="sha512-0QbL0ph8Tc8g5bLhfVzSqxe9GERORsKhIn1IrpxDAgUsbBGz/V7iSav2zzW325XGd1OMLdL4UiqRJj702IeqnQ==" crossorigin="anonymous"></script>
+<script type="text/javascript" src="booklet/src/jquery.booklet.latest.min.js"></script-->
+<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
