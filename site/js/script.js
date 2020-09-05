@@ -1,48 +1,6 @@
- var ajaxOptions = {
-  url: "snippets/magazine_2020_p1.html",
-  dataType: 'html'
-};
-
- $.when($.ajax(ajaxOptions)).done(function(){
-  console.log("ABCD");
-  function loadApp() {
-
-  // Create the flipbook
-
-  $('.flipbook').turn({
-      // Width
-
-      width:922,
-      
-      // Height
-
-      height:600,
-
-      // Elevation
-
-      elevation: 50,
-      
-      // Enable gradients
-
-      gradients: true,
-      
-      // Auto center this flipbook
-
-      autoCenter: true
-
-  });
+function ABC(){
+  alert("!!Still under development!!");
 }
-
-// Load the HTML4 version if there's not CSS transform
-
-yepnope({
-  test : Modernizr.csstransforms,
-  yep: ['../../lib/turn.js'],
-  nope: ['../../lib/turn.html4.min.js'],
-  both: ['css/basic.css'],
-  complete: loadApp
-});
-});
 
 $(function () { // Same as document.addEventListener("DOMContentLoaded"...
 
@@ -101,21 +59,10 @@ $ajaxUtils.sendGetRequest(
   false);
 });
 
-dc.loadMag = function () {
-  //showLoading("#intro");
-  $ajaxUtils.sendGetRequest(
-    mag_1,
-    function (responseText) {
-    document.querySelector("#intro")
-      .innerHTML = responseText;
-  },
-  false);
-};
-
 global.$dc = dc;
 })(window);
 
-function openNav() {
+/*function openNav() {
   document.getElementById("mySidenav").style.width = "70%";
   document.getElementById("mySidenav").style.padding = "3%";
   document.getElementById("mySidenav").style.paddingTop = "10%";
@@ -125,4 +72,4 @@ function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
   document.getElementById("mySidenav").style.padding = "0";
   document.getElementById("mySidenav").style.paddingTop = "10%";
-}
+}*/
