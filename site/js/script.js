@@ -67,7 +67,6 @@ global.$dc = dc;
   document.getElementById("mySidenav").style.padding = "3%";
   document.getElementById("mySidenav").style.paddingTop = "10%";
 }
-
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
   document.getElementById("mySidenav").style.padding = "0";

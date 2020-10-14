@@ -14,7 +14,7 @@ function toggleNav(){
 }
 
 // when clicking + or ☰ button
-$("button").on("click",function(){
+$("button").on('click',function(){
   // when clicking ☰ button, open nav
   if($("main").hasClass("open")){
     toggleNav();
@@ -29,17 +29,17 @@ $("button").on("click",function(){
 });
 
 // close nav
-$("#nav-close").on("click",function(){
+$("#nav-close").on('click',function(){
   toggleNav();
 });
 
-$("nav li").on("click",function(){
+$("nav li").on('click',function(){
   var index = $(this).index(); 
   toggleNav();
-  $('.magazine').turn('page', index);
+  $('.magazine').turn('page', index+1);
 });
 
-$("#pop-close").on("click",function(){
+$("#pop-close").on('click',function(){
   $('.container-fluid').hide();
   $('.container-fluid').removeClass("d");
 
