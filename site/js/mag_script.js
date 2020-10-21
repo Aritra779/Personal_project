@@ -10,6 +10,13 @@ function toggleNav(){
   else{
     $("button").addClass("menu");
     $("nav").fadeIn().css('display', 'flex');
+    var i = 0.1;
+    var s = 0.7;
+    $("tr").each(function(){
+      var x = s.toString(10)+"s";
+      $(this).css("animation-delay",x);
+      s = s + i;
+    });
   }
 }
 
@@ -33,8 +40,9 @@ $("#nav-close").on("click",function(){
   toggleNav();
 });
 
-$("nav li").on("click",function(){
-  var index = $(this).index(); 
+$("tr").on('click',function(){
+  var index = $(this).find("#p").text();
+  index = parseInt(index);
   toggleNav();
   $('.magazine').turn('page', index);
 });
