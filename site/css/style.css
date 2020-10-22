@@ -80,6 +80,7 @@ nav div div ul li {
 }
 .box:hover{
 	background-color:#f5c16e ;
+	box-shadow: 4px 4px 8px grey;
 }
 a{
 	text-decoration: none;
@@ -100,7 +101,7 @@ a{
   	padding-bottom: 30px;
  	border-top: 0;
 }
-.xyz {
+.comm {
   text-align: justify;
   height: 400px;
   width: 100%;
@@ -110,21 +111,21 @@ a{
   position: relative;
   border-radius: 50px 0 50px; 
   overflow: auto;
-  background: linear-gradient(-45deg, #598ede, #7ec3d6, #5ec4b8,#73ba9b);
+  background: linear-gradient(-45deg, #6040e3, #6a88c4, #84d8db, #66e8c3);
   background-size: 400% 400%;
   animation: gradient 10s ease infinite;
 }
-.xyz::-webkit-scrollbar {
+.comm::-webkit-scrollbar {
   display: none;
 }
-.xyz {
+.comm {
   -ms-overflow-style: none; 
   scrollbar-width: none;  
 }
-.xyz:hover {
+.comm:hover {
   box-shadow: 5px 5px 5px 10px #cccccc;
 }
-.xyz span {
+.comm span {
   position: absolute;
   top: 0;
   right: 0;
