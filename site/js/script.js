@@ -1,6 +1,3 @@
-function ABC(){
-  alert("!!Still under development!!");
-}
 
 $(function () { // Same as document.addEventListener("DOMContentLoaded"...
 
@@ -28,7 +25,7 @@ $(function () { // Same as document.addEventListener("DOMContentLoaded"...
 
 var dc = {};
 var homeHtml = "snippets/home-snippet.html";
-var mag_1 = "snippets/magazine_2020_p1.html"
+var about = "snippets/about-snippet.html"
 var insertHtml = function (selector, html) {
   var targetElem = document.querySelector(selector);
   targetElem.innerHTML = html;
@@ -46,6 +43,20 @@ var insertProperty = function (string, propName, propValue) {
   return string;
 }
 
+var switchMenuToActive = function () {
+  // Remove 'active' from home button
+  var classes = document.querySelector("#navHomeButton").className;
+  classes = classes.replace(new RegExp("active", "g"), "");
+  document.querySelector("#navHomeButton").className = classes;
+
+  // Add 'active' to menu button if not already there
+  classes = document.querySelector("#navAboutButton").className;
+  if (classes.indexOf("active") == -1) {
+    classes += " active";
+    document.querySelector("#navAboutButton").className = classes;
+  }
+};
+
 document.addEventListener("DOMContentLoaded", function (event) {
 
 // On first load, show home view
@@ -59,16 +70,18 @@ $ajaxUtils.sendGetRequest(
   false);
 });
 
+
+dc.loadMag = function () {
+  showLoading("#intro");
+  $ajaxUtils.sendGetRequest(
+  about,
+  function (responseText) {
+    document.querySelector("#intro")
+      .innerHTML = responseText;
+  },
+  false);
+};
+
+
 global.$dc = dc;
 })(window);
-
-/*function openNav() {
-  document.getElementById("mySidenav").style.width = "70%";
-  document.getElementById("mySidenav").style.padding = "3%";
-  document.getElementById("mySidenav").style.paddingTop = "10%";
-}
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-  document.getElementById("mySidenav").style.padding = "0";
-  document.getElementById("mySidenav").style.paddingTop = "10%";
-}*/

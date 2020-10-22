@@ -61,7 +61,7 @@ nav div div ul li {
 #intro{
 	min-height: 100vh;
 }
-.visual{
+/*.visual{
 	width: 100%;
 	border-radius:25px;
 	box-shadow: 5px 5px 10px grey;
@@ -69,14 +69,28 @@ nav div div ul li {
 	margin-bottom: 5%;
 	margin-left: auto;
 	margin-right: auto;
-}
+}*/
 .box{
-	background-color:#4a9156;
-	height: 100px;
-	margin-top: 5%;
-	margin-left: auto;
-	margin-right: auto;
+	background-color: #f5d5a2;
+	margin: 5%;
+	text-align: justify;
+	padding: 5%;
+	box-shadow: 2px 2px 4px grey;
+	border-radius:25px;
 }
+.box:hover{
+	background-color:#f5c16e ;
+}
+a{
+	text-decoration: none;
+	color: #f26da7;
+}
+.shell{
+	padding: 2%;
+	margin: 5%;
+	text-align: justify;
+}
+
 /*footer*/
 
 .panel-footer {
@@ -85,4 +99,39 @@ nav div div ul li {
   	padding-top: 35px;
   	padding-bottom: 30px;
  	border-top: 0;
+}
+.xyz {
+  text-align: justify;
+  height: 400px;
+  width: 100%;
+  padding: 10%;
+  padding-top: 15%;
+  margin-bottom: 20px;
+  position: relative;
+  border-radius: 50px 0 50px; 
+  overflow: auto;
+  background: linear-gradient(-45deg, #598ede, #7ec3d6, #5ec4b8,#73ba9b);
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+}
+.xyz::-webkit-scrollbar {
+  display: none;
+}
+.xyz {
+  -ms-overflow-style: none; 
+  scrollbar-width: none;  
+}
+.xyz:hover {
+  box-shadow: 5px 5px 5px 10px #cccccc;
+}
+.xyz span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1.6em;
+  background-color: #504c54;
+  color: #fff;
+  opacity: .5;
 }

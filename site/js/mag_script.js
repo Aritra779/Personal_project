@@ -4,14 +4,14 @@ function toggleNav(){
   if($("nav").is(":visible")){
     $("nav").fadeOut();
     $("button").removeClass("menu");
-    $("div.container").fadeIn(1500).removeClass("hidden");
+    $("div.magazine-viewport").fadeIn(2000).removeClass("hidden");
   }
   // if nav is closed, open it
   else{
     $("button").addClass("menu");
     $("nav").fadeIn().css('display', 'flex');
     var i = 0.1;
-    var s = 0.7;
+    var s = 0.5;
     $("tr").each(function(){
       var x = s.toString(10)+"s";
       $(this).css("animation-delay",x);
@@ -25,7 +25,7 @@ $("button").on("click",function(){
   // when clicking ☰ button, open nav
   if($("main").hasClass("open")){
     toggleNav();
-    $("div.container").addClass("hidden");
+    $("div.magazine-viewport").addClass("hidden");
   }
   // when clicking + button, open header
   else{
