@@ -135,26 +135,19 @@ function processRegion(region, regionType) {
 	data = decodeParams(region.attr('region-data'));
 
 	switch (regionType) {
-		case 'link' :
-			document.querySelector(".content").innerHTML =data.url;
+		case 'box' :
+			document.querySelector(".content").innerHTML =data.element;
 
 			$('.container-fluid').show();
 			$('.container-fluid').addClass("d");
-			//window.open(data.url);
+			
 
 		break;
-		/*case 'zoom' :
+		case 'link' :
 
-			var regionOffset = region.offset(),
-				viewportOffset = $('.magazine-viewport').offset(),
-				pos = {
-					x: regionOffset.left-viewportOffset.left,
-					y: regionOffset.top-viewportOffset.top
-				};
+			window.open(data.url);
 
-			$('.magazine-viewport').zoom('zoomIn', pos);
-
-		break;*/
+		break;
 		case 'to-page' :
 
 			$('.magazine').turn('page', data.page);
@@ -166,7 +159,7 @@ function processRegion(region, regionType) {
 
 // Load large page
 
-function loadLargePage(page, pageElement) {
+/*function loadLargePage(page, pageElement) {
 	
 	var img = $('<img />');
 
@@ -182,7 +175,7 @@ function loadLargePage(page, pageElement) {
 	// Loadnew page
 	
 	img.attr('src', 'pages/' +  page + '-large.jpg');
-}
+}*/
 
 // Load small page
 

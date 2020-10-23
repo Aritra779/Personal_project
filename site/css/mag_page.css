@@ -225,16 +225,18 @@ nav #nav-close {
 .d{
   display: flex !important;
   min-height: 100vh;
-  z-index: 13;
+  z-index: 200;
 }
 .pop{
   position : relative ;
-  width: 75%;
+  /*width: 75%;*/
   padding:1% 1% 0;
   background-color: white;
   border-radius: 5% 5% 0 0;
   background-color: #bee5f7;
+  z-index: 200;
 }
+
 
 #pop-close {
   position: relative;

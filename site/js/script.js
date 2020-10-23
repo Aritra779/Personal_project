@@ -4,7 +4,7 @@ $(function () { // Same as document.addEventListener("DOMContentLoaded"...
   // Same as document.querySelector("#navbarToggle").addEventListener("blur",...
   $("#navbarToggle").blur(function (event) {
     var screenWidth = window.innerWidth;
-    if (screenWidth < 768) {
+    if (screenWidth < 991) {
       $("#navbarNav").collapse('hide');
     }
   })
@@ -45,22 +45,26 @@ var insertProperty = function (string, propName, propValue) {
 
 var switchMenuToActive = function () {
   // Remove 'active' from home button
-  var classes = document.querySelector("#navHomeButton").className;
-  classes = classes.replace(new RegExp("active", "g"), "");
-  document.querySelector("#navHomeButton").className = classes;
-
+  //classes = classes.replace(new RegExp("active", "g"), "");
+  //document.querySelector("#navHomeButton").className = classes;
+  clas = $("#navHomeButton").hasClass("active");
+  if(clas){
+    $("#navHomeButton").removeClass("active");
+    $("#navAboutButton").addClass("active");
+  }
+  else{
+    $("#navAboutButton").removeClass("active");
+    $("#navHomeButton").addClass("active");
+  }
   // Add 'active' to menu button if not already there
-  classes = document.querySelector("#navAboutButton").className;
+  /*classes = $("#navAboutButton").className;
   if (classes.indexOf("active") == -1) {
     classes += " active";
     document.querySelector("#navAboutButton").className = classes;
-  }
+  }*/
 };
 
 document.addEventListener("DOMContentLoaded", function (event) {
-
-// On first load, show home view
-//showLoading("#intro");
 $ajaxUtils.sendGetRequest(
   homeHtml,
   function (responseText) {
@@ -70,9 +74,20 @@ $ajaxUtils.sendGetRequest(
   false);
 });
 
-
-dc.loadMag = function () {
+dc.loadhome = function () {
   showLoading("#intro");
+  switchMenuToActive();
+  $ajaxUtils.sendGetRequest(
+  homeHtml,
+  function (responseText) {
+    document.querySelector("#intro")
+      .innerHTML = responseText;
+  },
+  false);
+};
+dc.loadabout = function () {
+  showLoading("#intro");
+  switchMenuToActive();
   $ajaxUtils.sendGetRequest(
   about,
   function (responseText) {

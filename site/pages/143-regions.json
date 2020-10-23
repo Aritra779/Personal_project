@@ -1,1 +1,12 @@
-[]
+[{
+	"x":50,
+	"y":520,
+	"width":350,
+	"height":15,
+	"class":"box",
+	"data":
+		{
+			"element": "<video controls><source src='../audio-visual/E_tumi_kemon_tumi.mp4' type='video/mp4'>Your Browser Doesn't support this video</video>"
+		}
+}
+]

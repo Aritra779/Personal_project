@@ -22,6 +22,14 @@ header nav,footer{
 		background-position: 0% 50%;
 	}
 }
+#logo-img {
+  background: url('../images/ABCD.png') no-repeat center;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  margin: 10px 15px 10px 0;
+}
+
 .shadow{
 	box-shadow: 5px 5px 10px #bfbdbb;
 }
